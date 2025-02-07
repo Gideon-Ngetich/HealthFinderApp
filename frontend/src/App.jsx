@@ -3,15 +3,12 @@ import Home from './pages/Home'
 import About from './pages/About'
 import { Routes, Route } from 'react-router-dom'
 
-function App() {
-
+const App = () => {
   return (
     <Routes>
-      <Route path='/' component={Home} />
-      <Route path='/about' component={About} />
-
+      <Route path='/' Component={Home} />
+      <Route path='/about' Component={About} />
     </Routes>
-
   )
 }
 
