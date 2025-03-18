@@ -17,31 +17,51 @@ const facilitySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
+    description: {
         type: String,
         required: true
     },
-    services: {
-        type: [String],
-        required: true
+    location: {
+        type: { type: String, default: "Point"},
+        coordinates: { type: [Number], required: true},
     },
+    services: 
+        [
+            {
+                name: {type: String, required: true},
+                price: {type: String, required: true}
+            },
+        ],
     contacts: {
         type: String,
         required: true
     },
+    medical_covers: [
+        {
+            type: String,
+            required: true
+        }
+    ],
     working_hours: {
-        type: [String],
-        required: true
+        open: { type: String, required: true},
+        close: { type: String, required: true}
     },
-    status: {
+    images: [{ type: String}],
+    rating: {
+        average: { type: Number, default: 0},
+        total_reviews: { type: Number, default: 0}
+    },
+    category: {
         type: String,
-        default: 'pending'
+        required: true
     },
     createdAt: {
         type: String,
         default: Date.now
     }
 })
+
+facilitySchema.index({ location: "2dsphere" });
 
 const Facility = mongoose.model('Medical Facilities', facilitySchema)
 

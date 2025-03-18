@@ -4,7 +4,11 @@ const bcrypt = require('bcryptjs')
 
 router.post('/', async (req, res) => {
     try{ 
-        const { facilityName, email, password, address, location, services, contacts, working_hours, status } = req.body
+        const { facilityName, email, password, address, longitude, latitude, services, contacts, working_hours, medical_covers, images  } = req.body
+
+        if (!facilityName || !longitude || !latitude || !address || !contacts) {
+            return res.status(400).json({ message: "All required fields must be filled" });
+          }
 
         const verifyEmail = await Facility.findOne({email})
 
@@ -20,11 +24,12 @@ router.post('/', async (req, res) => {
             email,
             password: hashedPassword,
             address,
-            location,
+            location: { type: "Point", coordinates: [longitude, latitude]},
             services,
             contacts,
             working_hours,
-            status
+            medical_covers,
+            images
         })
 
         await facility.save()
