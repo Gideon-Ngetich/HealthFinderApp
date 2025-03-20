@@ -18,7 +18,7 @@ const FacilityDetails = () => {
       try {
         // const response = await axios.get(`${import.meta.env.VITE_DEV_ENDPOINT}/api/getfacilitybyid?fid=${id}`)
         const response = await axios.get(
-          `http://localhost:7200/api/getfacilitybyid?fid=${id}`
+          `${import.meta.env.VITE_DEV_ENDPOINT}/api/getfacilitybyid?fid=${id}`
         );
 
         const data = response.data;
