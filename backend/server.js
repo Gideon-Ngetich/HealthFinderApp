@@ -8,6 +8,7 @@ const registerFacility = require("./routes/facilityRegistration.route")
 const login = require('./routes/login.route')
 const updateFacility = require("./routes/facilityUpdate.route")
 const getFacilities = require('./routes/getFacilities.route')
+const getFacilityById = require('./routes/getFacilityById.route')
 
 const app = express()
 app.use(express.json())
@@ -21,6 +22,7 @@ app.use('/api/register-facility', registerFacility)
 app.use('/api/login', login)
 app.use('/api/updates/facilityupdate', updateFacility)
 app.use('/api/getfacilities', getFacilities)
+app.use('/api/getfacilitybyid', getFacilityById)
 
 app.listen(port, () => {
     console.log(`app running on port ${port}`)

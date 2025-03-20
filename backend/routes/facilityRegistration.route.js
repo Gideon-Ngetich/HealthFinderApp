@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 
 router.post('/', async (req, res) => {
     try{ 
-        const { facilityName, email, password, address, longitude, latitude, services, contacts, working_hours, medical_covers, images  } = req.body
+        const { facilityName, email, password, address, longitude, latitude, services, contacts, working_hours, medical_covers, images, category, description  } = req.body
 
         if (!facilityName || !longitude || !latitude || !address || !contacts) {
             return res.status(400).json({ message: "All required fields must be filled" });
@@ -29,7 +29,9 @@ router.post('/', async (req, res) => {
             contacts,
             working_hours,
             medical_covers,
-            images
+            images,
+            category,
+            description
         })
 
         await facility.save()

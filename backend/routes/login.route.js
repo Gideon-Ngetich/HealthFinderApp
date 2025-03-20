@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 
 router.post('/', async (req, res) => {
     const { email, password } = req.body
-
+    console.log(email, password)
     try {
         if(!email || !password ){
            return res.status(400).json("Email and password required")
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
            return res.status(400).json("Invalid email or password")
         }
 
-        res.status(200),json({message: "Login successfull", facility})
+        res.status(200).json({message: "Login successfull", facility})
     } catch (err) {
         console.error(err)
         res.status(500).json("Internal server error")
