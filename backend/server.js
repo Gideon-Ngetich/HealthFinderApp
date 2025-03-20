@@ -13,7 +13,8 @@ const getFacilityById = require('./routes/getFacilityById.route')
 const app = express()
 app.use(express.json())
 app.use(bodyParser.json())
-app.use(cors(origin = 'http://localhost:5173'))
+// app.use(cors(origin = 'http://localhost:5173'))
+app.use(cors(origin = process.env.DEPLOYMENT_FRONTEND_URL))
 
 const port = process.env.PORT
 dbConnection()
