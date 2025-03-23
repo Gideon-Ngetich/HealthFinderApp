@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const { json } = require('body-parser')
 const { Facility } = require('../models/facility.model')
 const bcrypt = require('bcryptjs')
 

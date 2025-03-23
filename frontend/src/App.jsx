@@ -5,7 +5,8 @@ import Facilities from './pages/Facilities'
 import FacilityDetails from './pages/FacilityDetails'
 import Login from './pages/Login'
 import FacilityRegistration from './pages/Register'
-import Dashboard from './pages/Dasboard'
+import FacilityDashboard from './pages/Dasboard'
+import CompareFacilities from './pages/Compare'
 import { Routes, Route } from 'react-router-dom'
 
 const App = () => {
@@ -17,7 +18,8 @@ const App = () => {
       <Route path='/facilities/:id' Component={FacilityDetails} />
       <Route path='/login' Component={Login} />
       <Route path='/register' Component={FacilityRegistration} />
-      <Route path='/dashboard' Component={Dashboard} />
+      <Route path='/dashboard/:id' Component={FacilityDashboard} />
+      <Route path='/compare' Component={CompareFacilities} />
 
 
     </Routes>

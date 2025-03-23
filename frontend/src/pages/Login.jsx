@@ -20,7 +20,7 @@ const Login = () => {
 
       if (response.status === 200) {
         message.success("Login successful");
-        navigate("/dashboard");
+        navigate(`/dashboard/${response.data.facility._id}`);
         console.log("Success:", response.data);
       }
     } catch (err) {

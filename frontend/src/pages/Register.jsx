@@ -197,27 +197,8 @@ const RegistrationForm = () => {
             <Option value="Clinic">Clinic</Option>
             <Option value="Pharmacy">Pharmacy</Option>
           </Select>
+
         </Form.Item>
-        {/* Images */}
-        <Form.List name="images">
-          {(fields, { add, remove }) => (
-            <>
-              {fields.map(({ key, name, ...restField }) => (
-                <Space key={key} align="baseline">
-                  <Form.Item
-                    {...restField}
-                    name={name}
-                    rules={[{ required: true, message: "Image URL required" }]}
-                  >
-                    <Input placeholder="Image URL" />
-                  </Form.Item>
-                  <Button onClick={() => remove(name)}>Remove</Button>
-                </Space>
-              ))}
-              <Button onClick={() => add()}>Add Image</Button>
-            </>
-          )}
-        </Form.List>
         <Form.Item>
           <Button type="primary" htmlType="submit">
             Register Facility

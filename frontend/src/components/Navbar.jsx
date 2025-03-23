@@ -25,7 +25,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full transition-all ${scrolling ? "bg-white shadow" : "bg-slate-50"}`}>
+    <nav className={` w-full transition-all ${scrolling ? "bg-white shadow" : "bg-slate-50"} z-20`}>
       <div className="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto">
         <div className="flex items-center">
           <img onClick={() => (window.location.href = "/")} src={""} alt="Logo" className="h-10 cursor-pointer" />

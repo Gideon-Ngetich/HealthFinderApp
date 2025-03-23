@@ -16,10 +16,15 @@ app.use(bodyParser.json())
 // app.use(cors(origin = 'http://localhost:5173'))
 app.use(cors(origin = process.env.DEPLOYMENT_FRONTEND_URL))
 
+const path = require("path");
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 const port = process.env.PORT
 dbConnection()
 
-app.use('/api/register-facility', registerFacility)
+
+app.use('/api', registerFacility)
 app.use('/api/login', login)
 app.use('/api/updates/facilityupdate', updateFacility)
 app.use('/api/getfacilities', getFacilities)
