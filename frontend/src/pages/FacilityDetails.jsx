@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   HomeOutlined,
   PhoneOutlined,
@@ -17,7 +17,7 @@ const FacilityDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState(null);
   const [showAllServices, setShowAllServices] = useState(false);
-
+  console.log(id)
   useEffect(() => {
     const fetchFacilityDetails = async () => {
       try {
@@ -25,8 +25,10 @@ const FacilityDetails = () => {
           `${import.meta.env.VITE_DEV_ENDPOINT}/api/getfacilitybyid?fid=${id}`
         );
         const data = response.data;
+        console.log(response.data.email)
         if (response.status === 200) {
           setDetails(data);
+          localStorage.setItem('hospitalMail', response.data.email)
         }
       } catch (err) {
         console.error(err);
@@ -200,7 +202,7 @@ const FacilityDetails = () => {
         {/* CTA Button */}
         <div className="mt-8">
           <button className="w-full bg-blue-600 hover:bg-blue-700 transition-all py-3 text-lg font-semibold text-white rounded-lg shadow-md">
-            Book Appointment
+            <Link to={`/appointment/${id}`}>Book Appointment</Link>
           </button>
         </div>
       </div>

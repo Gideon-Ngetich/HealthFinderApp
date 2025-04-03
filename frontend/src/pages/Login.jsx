@@ -3,6 +3,7 @@ import { Button, Checkbox, Form, Input, Typography, Card } from "antd";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { message } from "antd";
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
 
 const { Title } = Typography;
 
@@ -18,14 +19,15 @@ const Login = () => {
         values
       );
 
+      console.log(response.data.facility.email);
       if (response.status === 200) {
-        message.success("Login successful");
+      enqueueSnackbar("Login Successfull", {variant: "success"})
         navigate(`/dashboard/${response.data.facility._id}`);
-        console.log("Success:", response.data);
+        localStorage.setItem("Facilityemail", response.data.facility.email);
       }
     } catch (err) {
       console.error("Error:", err.response?.data || err.message);
-      message.error("Login failed");
+      enqueueSnackbar("Error logging in", {variant: "error"})
     }
   };
 
@@ -35,6 +37,8 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <SnackbarProvider />
+
       <Card className="w-full max-w-md p-6 shadow-lg rounded-lg bg-white">
         <Title level={3} className="text-center mb-4">
           Login

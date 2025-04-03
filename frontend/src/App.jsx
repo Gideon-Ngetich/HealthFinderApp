@@ -8,6 +8,7 @@ import FacilityRegistration from './pages/Register'
 import FacilityDashboard from './pages/Dasboard'
 import CompareFacilities from './pages/Compare'
 import { Routes, Route } from 'react-router-dom'
+import AppointmentForm from './components/BookAppointmentForm'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='/register' Component={FacilityRegistration} />
       <Route path='/dashboard/:id' Component={FacilityDashboard} />
       <Route path='/compare' Component={CompareFacilities} />
+      <Route path='/appointment/:id' Component={AppointmentForm} />
 
 
     </Routes>
